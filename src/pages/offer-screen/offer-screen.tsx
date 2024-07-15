@@ -1,21 +1,19 @@
-import Header from "../../components/header/header";
-import OfferInsideList from "../../components/offer-inside-list/offer-inside-list";
-import OfferImage from "../../components/offer-image/offer-image";
+import Header from '../../components/header/header';
+import OfferInsideList from '../../components/offer-inside-list/offer-inside-list';
+import OfferImage from '../../components/offer-image/offer-image';
 
-const INSIDES : String[] = ['Wi-Fi','Washing machine','Towels','Heating','Coffee machine','Baby seat','Kitchen','Dishwasher','Cabel TV','Fridge'] as const;
+const INSIDES : string[] = ['Wi-Fi','Washing machine','Towels','Heating','Coffee machine','Baby seat','Kitchen','Dishwasher','Cabel TV','Fridge'] as const;
 const OFFERIMAGE : string[] = ['img/room.jpg','img/apartment-01.jpg','img/apartment-02.jpg','img/apartment-03.jpg','img/studio-01.jpg','img/apartment-01.jpg'] as const;
 
-
-
 function OfferScreen () : JSX.Element{
-    return (
+  return (
     <div className="page">
-       <Header/>
-       <main className="page__main page__main--offer">
+      <Header/>
+      <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {OFFERIMAGE.map((image) => <OfferImage image = {image}/>)}
+              {OFFERIMAGE.map((image) => <OfferImage key = {image} image = {image}/>)}
               <div className="offer__image-wrapper">
                 <img className="offer__image" src="img/room.jpg" alt="Photo studio"/>
               </div>
@@ -39,7 +37,7 @@ function OfferScreen () : JSX.Element{
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{width: "80%"}}></span>
+                  <span style={{width: '80%'}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">4.8</span>
@@ -100,7 +98,7 @@ function OfferScreen () : JSX.Element{
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style={{width: "80%"}}></span>
+                          <span style={{width: '80%'}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -254,7 +252,7 @@ function OfferScreen () : JSX.Element{
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style= {{width: "100%"}}></span>
+                      <span style= {{width: '100%'}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -269,7 +267,7 @@ function OfferScreen () : JSX.Element{
         </div>
       </main>
     </div>
-    )
+  );
 }
 
 export default OfferScreen;
