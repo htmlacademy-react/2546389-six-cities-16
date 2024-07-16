@@ -17,9 +17,8 @@ type inside = {
 }
 
 type OfferInsideListProps = {
-  insides : inside[];
+  insides : ReadonlyArray<inside>;
 };
-
 
 function OfferInsideList ({insides} : OfferInsideListProps) : JSX.Element{
   return (
