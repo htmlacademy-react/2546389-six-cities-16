@@ -11,8 +11,13 @@ function OfferInsideItem ({inside} : OfferInsideItemProps) : JSX.Element{
   );
 }
 
+type inside = {
+  name : string;
+  id : number;
+}
+
 type OfferInsideListProps = {
-  insides : string[];
+  insides : inside[];
 };
 
 
@@ -20,7 +25,7 @@ function OfferInsideList ({insides} : OfferInsideListProps) : JSX.Element{
   return (
     <ul className="offer__inside-list">
       {
-        insides.map((inside) => <OfferInsideItem key= {inside} inside ={inside}/>)
+        insides.map((inside) => <OfferInsideItem key= {inside.id} inside ={inside.name}/>)
       };
     </ul>
   );

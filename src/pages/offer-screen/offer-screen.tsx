@@ -2,8 +2,83 @@ import Header from '../../components/header/header';
 import OfferInsideList from '../../components/offer-inside-list/offer-inside-list';
 import OfferImage from '../../components/offer-image/offer-image';
 
-const INSIDES : string[] = ['Wi-Fi','Washing machine','Towels','Heating','Coffee machine','Baby seat','Kitchen','Dishwasher','Cabel TV','Fridge'] as const;
-const OFFERIMAGE : string[] = ['img/room.jpg','img/apartment-01.jpg','img/apartment-02.jpg','img/apartment-03.jpg','img/studio-01.jpg','img/apartment-01.jpg'] as const;
+type inside = {
+  name : string;
+  id : number;
+}
+
+type image = {
+  name : string;
+  id : number;
+}
+
+const INSIDES : inside[] = [
+  {
+    name : 'Wi-Fi',
+    id : 1
+  },
+  {
+    name : 'Washing machine',
+    id : 2
+  },
+  {
+    name : 'Towels',
+    id : 3
+  },
+  {
+    name : 'Heating',
+    id : 4
+  },
+  {
+    name : 'Coffee machine',
+    id : 5
+  },
+  {
+    name : 'Baby seat',
+    id : 6
+  },
+  {
+    name : 'Kitchen',
+    id : 7
+  },
+  {
+    name : 'Dishwasher',
+    id : 8
+  },
+  {
+    name : 'Cabel TV',
+    id : 9
+  },
+  {
+    name : 'Fridge',
+    id :10
+  }] as const;
+
+const OFFERIMAGES : image[] = [
+  {
+    name : 'img/room.jpg',
+    id : 1
+  },
+  {
+    name : 'img/apartment-01.jpg',
+    id : 2
+  },
+  {
+    name : 'img/apartment-02.jpg',
+    id : 3
+  },
+  {
+    name : 'img/apartment-03.jpg',
+    id : 4
+  },
+  {
+    name : 'img/studio-01.jpg',
+    id : 5
+  },
+  {
+    name : 'img/apartment-01.jpg',
+    id : 6
+  }] as const;
 
 function OfferScreen () : JSX.Element{
   return (
@@ -13,7 +88,7 @@ function OfferScreen () : JSX.Element{
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {OFFERIMAGE.map((image) => <OfferImage key = {image} image = {image}/>)}
+              {OFFERIMAGES.map((image) => <OfferImage key = {image.id} image = {image.name}/>)}
               <div className="offer__image-wrapper">
                 <img className="offer__image" src="img/room.jpg" alt="Photo studio"/>
               </div>
