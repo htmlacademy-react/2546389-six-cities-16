@@ -12,7 +12,7 @@ type image = {
   id : number;
 }
 
-const INSIDES : inside[] = [
+const INSIDES : ReadonlyArray<inside> = [
   {
     name : 'Wi-Fi',
     id : 1
@@ -54,7 +54,7 @@ const INSIDES : inside[] = [
     id :10
   }] as const;
 
-const OFFERIMAGES : image[] = [
+const OFFERIMAGES : ReadonlyArray<image> = [
   {
     name : 'img/room.jpg',
     id : 1

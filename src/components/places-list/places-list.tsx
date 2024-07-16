@@ -10,7 +10,7 @@ type PlaceCardProps = {
     id : number;
   };
 
-const CARDS : PlaceCardProps[] = [
+const CARDS : ReadonlyArray<PlaceCardProps> = [
   {img : 'img/apartment-01.jpg',
     priceValue : 120,
     priceText : 'night',

@@ -1,4 +1,4 @@
-const SITIES : Sity[] = [
+const SITIES : ReadonlyArray<Sity> = [
   {
     name :'Paris',
     id : 1,
