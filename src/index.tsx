@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App countCard = {5} />;
+    <App/>;
   </React.StrictMode>
 );
