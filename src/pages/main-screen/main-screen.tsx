@@ -1,13 +1,15 @@
-import PlacesList from '../../components/places-list/places-list';
 import Header from '../../components/header/header';
 import LocationsList from '../../components/locations-list/locations-list';
+import { CityMap } from '../../const';
+import { OfferPreview } from '../../types/offer';
+import PlaceCard from '../../components/place-card/place-card';
 
 type MainScreenProps = {
-    countCard: number;
+  offers: OfferPreview[];
+  locations: typeof CityMap;
 };
 
-
-function MainScreen ({countCard} : MainScreenProps) : JSX.Element{
+function MainScreen ({offers, locations} : MainScreenProps) : JSX.Element{
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -15,7 +17,7 @@ function MainScreen ({countCard} : MainScreenProps) : JSX.Element{
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationsList/>
+            <LocationsList Amsterdam={locations.Amsterdam} Brussels={locations.Brussels} Cologne={locations.Cologne} Dusseldorf={locations.Dusseldorf} Hamburg={locations.Hamburg} Paris={locations.Paris} />
           </section>
         </div>
         <div className="cities">
@@ -38,7 +40,16 @@ function MainScreen ({countCard} : MainScreenProps) : JSX.Element{
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <PlacesList countCard={countCard}/>
+              <div className="cities__places-list places__list tabs__content">
+                {offers.map((dataCard) => (
+                  <PlaceCard
+                    variant="cities"
+                    size="large"
+                    key={dataCard.id}
+                    offer={dataCard}
+                  />
+                ))}
+              </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
