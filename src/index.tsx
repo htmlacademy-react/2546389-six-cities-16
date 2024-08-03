@@ -1,3 +1,4 @@
+import App from './components/app/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -7,6 +8,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <h1>Hello, World!</h1>
+    <App countCard = {5} />;
   </React.StrictMode>
 );
