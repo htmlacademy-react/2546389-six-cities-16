@@ -1,5 +1,6 @@
 import Header from '../../components/header/header';
-import LocatonList from '../../components/locations-list/locations-list';
+import LocationsList from '../../components/locations-list/locations-list';
+import { CityMap } from '../../const';
 
 function MainEmptyScreen () : JSX.Element{
   return (
@@ -9,7 +10,7 @@ function MainEmptyScreen () : JSX.Element{
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocatonList/>
+            <LocationsList Amsterdam={CityMap.Amsterdam} Brussels={CityMap.Brussels} Cologne={CityMap.Cologne} Dusseldorf={CityMap.Dusseldorf} Hamburg={CityMap.Hamburg} Paris={CityMap.Paris} />
           </section>
         </div>
         <div className="cities">
