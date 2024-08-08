@@ -2763,7 +2763,7 @@ export const OFFERS: OfferPreview[] = [
   },
 ];
 
-export const OFFER_DETAIL: Offer = {
+export const OFFER_DETAIL: Offer[] = [{
   id: 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
   title: 'Nice, cozy, warm big bed apartment',
   description: 'Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.',
@@ -2809,6 +2809,55 @@ export const OFFER_DETAIL: Offer = {
   rating: 2.4,
   bedrooms: 5,
   maxAdults: 7
-};
+},
+{
+  id: '74ca1674-145a-4f32-872b-0cb76db0926c',
+  title: 'House in countryside',
+  description: 'Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.',
+  type: 'room',
+  price: 145,
+  images: [
+    'https://16.design.htmlacademy.pro/static/hotel/10.jpg',
+    'https://16.design.htmlacademy.pro/static/hotel/13.jpg',
+    'https://16.design.htmlacademy.pro/static/hotel/11.jpg',
+    'https://16.design.htmlacademy.pro/static/hotel/20.jpg',
+    'https://16.design.htmlacademy.pro/static/hotel/6.jpg',
+    'https://16.design.htmlacademy.pro/static/hotel/8.jpg'
+  ],
+  city: {
+    name: 'Paris',
+    location: {
+      latitude: 48.85661,
+      longitude: 2.351499,
+      zoom: 13,
+    },
+  },
+  location: {
+    latitude: 48.858610000000006,
+    longitude: 2.330499,
+    zoom: 16,
+  },
+  goods: [
+    'Towels',
+    'Cable TV',
+    'Laptop friendly workspace',
+    'Baby seat',
+    'Heating',
+    '"Kitchen',
+    'Coffee machine'
+  ],
+  host: {
+    isPro: true,
+    name: 'Angela',
+    avatarUrl: 'https://16.design.htmlacademy.pro/static/host/avatar-angelina.jpg'
+  },
+  isPremium: false,
+  isFavorite: true,
+  rating: 4.8,
+  bedrooms: 2,
+  maxAdults: 1
+}];
 
-
+export const getMockOfferCardsById = (offerId : string | undefined) => OFFER_DETAIL.find((offer)=>offer.id === offerId);
+export const getMockNearOfferCardsById = (offerId : string | undefined) => OFFERS.filter((offer)=>offer.id !== offerId).slice(0.3);
+export const getMockOfferCardsFavorites = () => OFFERS.filter((offer)=>offer.isFavorite === true);

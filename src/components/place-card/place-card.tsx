@@ -2,16 +2,18 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { OfferPreview } from '../../types/offer';
 import { getRatingWidth } from '../../utils/card';
+import FavoriteButton from '../../components/favorite-button/favorite-button';
 import clsx from 'clsx';
 
 type Size = 'small' | 'medium' | 'large';
 
-type CardType = 'favorites' | 'cities';
+type CardType = 'favorites' | 'cities' | 'near-places';
 
 type OfferCardProps = {
   offer: OfferPreview;
   size: Size;
   variant?: CardType;
+  setIsEditing(evt : OfferPreview): void;
 };
 
 function getImageSize(size: Size) {
@@ -23,9 +25,12 @@ function getImageSize(size: Size) {
   }
 }
 
-function PlaceCard({offer,variant,size,}: OfferCardProps): JSX.Element {
+function PlaceCard({offer,variant,size,setIsEditing}: OfferCardProps): JSX.Element {
   return (
-    <article className={clsx(variant && `${variant}__card`, 'place-card')}>
+    <article onMouseOver={() => {
+      setIsEditing(offer);
+    }} className={clsx(variant && `${variant}__card`, 'place-card')}
+    >
       {
         offer.isPremium
           ? <div className="place-card__mark"><span>Premium</span></div>
@@ -52,14 +57,7 @@ function PlaceCard({offer,variant,size,}: OfferCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">
-              {offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}
-            </span>
-          </button>
+          <FavoriteButton className='place-card' isFavorites = {offer.isFavorite}/>
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

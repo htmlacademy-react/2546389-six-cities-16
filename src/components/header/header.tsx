@@ -1,4 +1,9 @@
+import { getMockOfferCardsFavorites } from '../../mocks/offers';
+
 function Header () : JSX.Element{
+
+  const favoritesCount = getMockOfferCardsFavorites().length;
+
   return (
     <header className="header">
       <div className="container">
@@ -15,7 +20,7 @@ function Header () : JSX.Element{
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">3</span>
+                  <span className="header__favorite-count">{favoritesCount}</span>
                 </a>
               </li>
               <li className="header__nav-item">
