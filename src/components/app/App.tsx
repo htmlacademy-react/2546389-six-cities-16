@@ -19,7 +19,7 @@ function App(): JSX.Element {
         <Route path= {AppRoute.Login} element={<LoginScreen/>} />
         <Route path={AppRoute.Favorites} element={<PrivateRoute authorizationStatus = {AuthorizationStatus.NoAuth}><FavoritesScreen offers={OFFERS}/></PrivateRoute>}/>
         <Route path={`${AppRoute.Offer}/:offerId`} element={<OfferScreen/>} />
-        <Route path={AppRoute.NotFound} element={<Page404/>} />
+        <Route path={AppRoute.NotFound} element={<Page404/>}/>
       </Routes>
     </BrowserRouter>
   );
