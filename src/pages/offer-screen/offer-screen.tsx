@@ -5,9 +5,17 @@ import { AppRoute } from '../../const';
 import PlaceCard from '../../components/place-card/place-card';
 import OfferContainer from '../../components/offer-container/offer-container';
 import { OfferPreview } from '../../types/offer';
+import {useState} from 'react';
 
 function OfferScreen () : JSX.Element{
+
   const {offerId: offerId} = useParams();
+
+  const results = useState(offerId);
+  const setActivePlaceCard = results[1];
+  const onPlaceCardOver = (evt : OfferPreview) => {
+    setActivePlaceCard(evt.id);
+  };
 
   const nearOfferCards = getMockNearOfferCardsById(offerId).slice(0,3);
   const currentOffer = getMockOfferCardsById(offerId);
@@ -15,8 +23,6 @@ function OfferScreen () : JSX.Element{
   if (!currentOffer){
     return <Navigate to={AppRoute.NotFound} replace/>;
   }
-
-  const onPlaceCardOver = (evt : OfferPreview) => {};
 
   return (
     <div className="page">

@@ -7,7 +7,8 @@ type PlaceCardsListProps = {
 };
 
 function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element {
-  const [activePlaceCard, setActivePlaceCard] = useState(offers[0].id);
+  const results = useState(offers[0].id);
+  const setActivePlaceCard = results[1];
 
   const onPlaceCardOver = (evt : OfferPreview) => {
     setActivePlaceCard(evt.id);

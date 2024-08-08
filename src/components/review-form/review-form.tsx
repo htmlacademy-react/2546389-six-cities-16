@@ -3,8 +3,12 @@ import { getStarsText } from '../../utils/card';
 
 function ReviewsForm () : JSX.Element{
 
-  const [rating, setRating] = useState(0);
-  const [text, setText] = useState('');
+  const resultsRating = useState(0);
+  const setRating = resultsRating[1];
+
+  const resultsText = useState('');
+  const setText = resultsText[1];
+
   const onRatingChange = (evt : React.FormEvent) => {
     if (evt.target instanceof HTMLInputElement){
       setRating(Number(evt.target.value));
