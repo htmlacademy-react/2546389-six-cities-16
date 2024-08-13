@@ -28,7 +28,6 @@ function getImageSize(size: Size) {
 function PlaceCard({offer,variant,size,onOverCard}: OfferCardProps): JSX.Element {
   return (
     <article onMouseOver={() => {
-      //setIsEditing(offer);
       if (onOverCard){
         onOverCard(offer);
       }
