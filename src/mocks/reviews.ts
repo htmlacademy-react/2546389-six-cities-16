@@ -12,6 +12,17 @@ export const REVIEWS: Reviews[] =
     },
     comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam',
     rating: 4
+  },
+  {
+    id : 'f641a4cd-06b9-4a1d-8957-3e19fcad7948',
+    date : '2019-05-08T14:13:56.569Z',
+    user: {
+      name: 'Oliver Conner',
+      avatarUrl: 'https://url-to-image/image.png',
+      isPro: false
+    },
+    comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam',
+    rating: 4
   }
 ];
 

@@ -4,18 +4,11 @@ import {getMockNearOfferCardsById, getMockOfferCardsById} from '../../mocks/offe
 import { AppRoute } from '../../const';
 import PlaceCard from '../../components/place-card/place-card';
 import OfferContainer from '../../components/offer-container/offer-container';
-import { OfferPreview } from '../../types/offer';
-import {useState} from 'react';
+import Map from '../../components/map/map';
 
 function OfferScreen () : JSX.Element{
 
   const {offerId: offerId} = useParams();
-
-  const results = useState(offerId);
-  const setActivePlaceCard = results[1];
-  const onPlaceCardOver = (evt : OfferPreview) => {
-    setActivePlaceCard(evt.id);
-  };
 
   const nearOfferCards = getMockNearOfferCardsById(offerId).slice(0,3);
   const currentOffer = getMockOfferCardsById(offerId);
@@ -39,13 +32,15 @@ function OfferScreen () : JSX.Element{
             </div>
           </div>
           <OfferContainer offer={currentOffer}/>
-          <section className="offer__map map"></section>
+          <section className="offer__map map">
+            <Map city={nearOfferCards[0].city} points={nearOfferCards} selectedPoint={undefined} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <div className="near-places__list places__list">
-              {nearOfferCards.map((offerCard) => <PlaceCard key = {offerCard.id} offer = {offerCard} variant = 'near-places' size='large' setIsEditing={onPlaceCardOver}/>)}
+              {nearOfferCards.map((offerCard) => <PlaceCard key = {offerCard.id} offer = {offerCard} variant = 'near-places' size='large'/>)}
             </div>
           </section>
         </div>
