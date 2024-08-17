@@ -3,6 +3,9 @@ import LocationsList from '../../components/locations-list/locations-list';
 import { CityMap } from '../../const';
 import { OfferPreview } from '../../types/offer';
 import PlaceCardsList from '../../components/place-cards-list/place-cards-list';
+import Map from '../../components/map/map';
+import {useState} from 'react';
+
 
 type MainScreenProps = {
   offers: OfferPreview[];
@@ -10,6 +13,21 @@ type MainScreenProps = {
 };
 
 function MainScreen ({offers, locations} : MainScreenProps) : JSX.Element{
+
+  const [activeSity ,setactiveSity] = useState('Paris');
+
+  const onActiveSityClick = (sityName : string) => {
+    setactiveSity(sityName);
+  };
+
+  const [activePlaceCard ,setActivePlaceCard] = useState(offers[0]);
+
+  const onPlaceCardOver = (evt : OfferPreview) => {
+    setActivePlaceCard(evt);
+  };
+
+  const offersInSelectSity = offers.filter((offer)=>offer.city.name === activeSity);
+
   return (
     <div className="page page--gray page--main">
       <Header/>
@@ -17,14 +35,14 @@ function MainScreen ({offers, locations} : MainScreenProps) : JSX.Element{
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationsList Amsterdam={locations.Amsterdam} Brussels={locations.Brussels} Cologne={locations.Cologne} Dusseldorf={locations.Dusseldorf} Hamburg={locations.Hamburg} Paris={locations.Paris} />
+            <LocationsList onActiveSityClick = {onActiveSityClick} locations={locations}/>
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{offersInSelectSity.length} places to stay in {activeSity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -40,10 +58,12 @@ function MainScreen ({offers, locations} : MainScreenProps) : JSX.Element{
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <PlaceCardsList offers={offers}/>
+              <PlaceCardsList offers={offersInSelectSity} onOverCard={onPlaceCardOver}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map city={offersInSelectSity[0].city} points={offersInSelectSity.slice(0,4)} selectedPoint={activePlaceCard}/>
+              </section>
             </div>
           </div>
         </div>

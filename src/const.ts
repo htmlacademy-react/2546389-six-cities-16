@@ -33,6 +33,11 @@ export const CityMap = {
   Dusseldorf: { name: CitiesName.Dusseldorf, location: { latitude: 51.2277, longitude: 6.7735, zoom: 10 } },
 } as const;
 
+export const URL_MARKER_DEFAULT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export const URL_MARKER_CURRENT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
 
 export const DEFAULT_CITY = CitiesName.Paris;
 

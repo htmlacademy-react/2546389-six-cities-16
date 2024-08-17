@@ -10,7 +10,7 @@ function MainEmptyScreen () : JSX.Element{
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationsList Amsterdam={CityMap.Amsterdam} Brussels={CityMap.Brussels} Cologne={CityMap.Cologne} Dusseldorf={CityMap.Dusseldorf} Hamburg={CityMap.Hamburg} Paris={CityMap.Paris} />
+            <LocationsList locations={CityMap} />
           </section>
         </div>
         <div className="cities">

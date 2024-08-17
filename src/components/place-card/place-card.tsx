@@ -13,7 +13,7 @@ type OfferCardProps = {
   offer: OfferPreview;
   size: Size;
   variant?: CardType;
-  setIsEditing(evt : OfferPreview): void;
+  onOverCard? : (evt : OfferPreview) => void;
 };
 
 function getImageSize(size: Size) {
@@ -25,10 +25,12 @@ function getImageSize(size: Size) {
   }
 }
 
-function PlaceCard({offer,variant,size,setIsEditing}: OfferCardProps): JSX.Element {
+function PlaceCard({offer,variant,size,onOverCard}: OfferCardProps): JSX.Element {
   return (
     <article onMouseOver={() => {
-      setIsEditing(offer);
+      if (onOverCard){
+        onOverCard(offer);
+      }
     }} className={clsx(variant && `${variant}__card`, 'place-card')}
     >
       {

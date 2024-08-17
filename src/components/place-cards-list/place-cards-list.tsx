@@ -1,18 +1,18 @@
 import PlaceCard from '../../components/place-card/place-card';
 import { OfferPreview } from '../../types/offer';
-import {useState} from 'react';
 
 type PlaceCardsListProps = {
   offers: OfferPreview[];
+  onOverCard? : (evt : OfferPreview) => void;
 };
 
-function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element {
-  const results = useState(offers[0].id);
+function PlaceCardsList({offers,onOverCard}: PlaceCardsListProps): JSX.Element {
+  /*const results = useState(offers[0].id);
   const setActivePlaceCard = results[1];
 
   const onPlaceCardOver = (evt : OfferPreview) => {
     setActivePlaceCard(evt.id);
-  };
+  };*/
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -22,7 +22,7 @@ function PlaceCardsList({offers}: PlaceCardsListProps): JSX.Element {
           size="large"
           key={dataCard.id}
           offer={dataCard}
-          setIsEditing={onPlaceCardOver}
+          onOverCard={onOverCard}
         />
       ))}
     </div>);

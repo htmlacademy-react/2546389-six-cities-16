@@ -1,13 +1,25 @@
 import { CityMap } from '../../const';
 
-function LocationsList (locations : typeof CityMap) : JSX.Element{
+type LocationsListProps = {
+  locations : typeof CityMap;
+  onActiveSityClick? : (sityName : string) => void;
+};
+
+function LocationsList ({locations,onActiveSityClick} : LocationsListProps) : JSX.Element{
   return (
-    <ul className ="locations__list tabs__list">
+    <ul className ="locations__list tabs__list" >
       {
         Object.values(locations).map((city) => (
           <li key={city.name} className="locations__item">
             <a className="locations__item-link tabs__item" href="#">
-              <span>{city.name}</span>
+              <span onClick={() => {
+                if (onActiveSityClick){
+                  onActiveSityClick(city.name);
+                }
+              }}
+              >
+                {city.name}
+              </span>
             </a>
           </li>
         ))
