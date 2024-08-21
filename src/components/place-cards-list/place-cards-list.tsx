@@ -7,12 +7,6 @@ type PlaceCardsListProps = {
 };
 
 function PlaceCardsList({offers,onOverCard}: PlaceCardsListProps): JSX.Element {
-  /*const results = useState(offers[0].id);
-  const setActivePlaceCard = results[1];
-
-  const onPlaceCardOver = (evt : OfferPreview) => {
-    setActivePlaceCard(evt.id);
-  };*/
 
   return (
     <div className="cities__places-list places__list tabs__content">
