@@ -1,4 +1,6 @@
 import { TSizeMap } from './types/size';
+import { OfferPreview } from './types/offer';
+
 
 export enum AuthorizationStatus {
     Auth = 'AUTH',
@@ -50,3 +52,18 @@ export const ImageSizeMap: TSizeMap = {
   small: { width: '150', height: '110'},
   large: { width: '260', height: '200'},
 } as const;
+
+export enum SortVariants {
+  Popular = 'Popular',
+  PriceLowToHi = 'Price low to hi',
+  PriceHiToLow = 'Price hi to low',
+  TopRatedFirst = 'Top rated first',
+}
+export const DEFAULT_SORT_VARIANT = SortVariants.Popular;
+
+export const sortOffers = [
+  {sortVariant: SortVariants.Popular, sort:(offers : OfferPreview[]) => offers},
+  {sortVariant: SortVariants.PriceHiToLow, sort: (offers : OfferPreview[]) => offers.sort((a, b) => b.price - a.price)},
+  {sortVariant: SortVariants.PriceLowToHi, sort: (offers : OfferPreview[]) => offers.sort((a, b) => a.price - b.price)},
+  {sortVariant: SortVariants.TopRatedFirst, sort: (offers : OfferPreview[]) => offers.sort((a, b) => b.rating - a.rating)},
+];
